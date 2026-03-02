@@ -115,3 +115,215 @@ LogisticRegression does not accept missing values encoded as NaN natively. For s
 ValueError: Input X contains NaN.
 LogisticRegression does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
 
+2026-03-02 16:39:57,658 - main - INFO - Starting Experimental Pipeline...
+2026-03-02 16:39:57,663 - src.utils - INFO - Ensured directory exists: E:\CSE\dwdm-ca2\results
+2026-03-02 16:39:57,665 - src.utils - INFO - Ensured directory exists: E:\CSE\dwdm-ca2\results\plots
+2026-03-02 16:39:57,677 - experiments.run_experiments - INFO - Starting Research Experiment Pipeline
+2026-03-02 16:39:57,681 - experiments.run_experiments - INFO - Loading data from E:\CSE\dwdm-ca2\data\creditcard.csv
+2026-03-02 16:39:57,756 - experiments.run_experiments - INFO - Data loaded successfully. Shape: (200, 31)
+2026-03-02 16:39:57,838 - experiments.run_experiments - INFO - >>> Running Baseline: Raw Data
+2026-03-02 16:39:57,989 - experiments.run_experiments - INFO - --- Running evaluation for: 1_Raw ---
+2026-03-02 16:39:58,075 - src.model_training - INFO - Training Logistic Regression model...
+2026-03-02 16:39:58,636 - src.model_training - INFO - Logistic Regression training completed in 0.4603 seconds.
+2026-03-02 16:39:58,679 - src.evaluation - INFO - Evaluating Logistic Regression on configuration: 1_Raw
+2026-03-02 16:39:58,729 - src.evaluation - INFO - Confusion Matrix for Logistic Regression (1_Raw):
+[[31  2]
+ [ 5  1]]
+2026-03-02 16:40:01,652 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_1_Raw_-_Logistic_Regression.png
+2026-03-02 16:40:01,653 - src.model_training - INFO - Training Random Forest model...
+2026-03-02 16:40:01,979 - src.model_training - INFO - Random Forest training completed in 0.3260 seconds.
+2026-03-02 16:40:01,980 - src.evaluation - INFO - Evaluating Random Forest on configuration: 1_Raw
+2026-03-02 16:40:02,068 - src.evaluation - INFO - Confusion Matrix for Random Forest (1_Raw):
+[[33  0]
+ [ 6  0]]
+2026-03-02 16:40:02,438 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_1_Raw_-_Random_Forest.png
+2026-03-02 16:40:02,439 - experiments.run_experiments - INFO - >>> Applying Data Cleansing Phase
+2026-03-02 16:40:02,440 - src.data_cleaning - INFO - Handling missing values using strategy: mean
+2026-03-02 16:40:02,446 - src.data_cleaning - INFO - Missing values handled successfully.
+2026-03-02 16:40:02,451 - src.data_cleaning - INFO - Removed 0 duplicate rows. New shape: (200, 31)
+2026-03-02 16:40:02,452 - src.data_cleaning - INFO - Removing outliers using IQR method.
+2026-03-02 16:40:02,522 - src.data_cleaning - INFO - Removed 67 outliers via IQR. New shape: (133, 31)
+2026-03-02 16:40:02,523 - src.data_cleaning - INFO - Scaling features using standard scaler.
+2026-03-02 16:40:02,532 - src.data_cleaning - INFO - Features scaled successfully.
+2026-03-02 16:40:02,538 - src.data_cleaning - INFO - Applying SMOTE to handle class imbalance.
+2026-03-02 16:40:05,292 - src.data_cleaning - INFO - SMOTE applied. Original shape: (106, 30), Resampled shape: (180, 30)
+2026-03-02 16:40:05,293 - experiments.run_experiments - INFO - --- Running evaluation for: 2_Cleaned ---
+2026-03-02 16:40:05,294 - src.model_training - INFO - Training Logistic Regression model...
+2026-03-02 16:40:05,303 - src.model_training - INFO - Logistic Regression training completed in 0.0091 seconds.
+2026-03-02 16:40:05,304 - src.evaluation - INFO - Evaluating Logistic Regression on configuration: 2_Cleaned
+2026-03-02 16:40:05,330 - src.evaluation - INFO - Confusion Matrix for Logistic Regression (2_Cleaned):
+[[15  8]
+ [ 3  1]]
+2026-03-02 16:40:05,603 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_2_Cleaned_-_Logistic_Regression.png
+2026-03-02 16:40:05,603 - src.model_training - INFO - Training Random Forest model...
+2026-03-02 16:40:05,895 - src.model_training - INFO - Random Forest training completed in 0.2912 seconds.
+2026-03-02 16:40:05,896 - src.evaluation - INFO - Evaluating Random Forest on configuration: 2_Cleaned
+2026-03-02 16:40:05,984 - src.evaluation - INFO - Confusion Matrix for Random Forest (2_Cleaned):
+[[22  1]
+ [ 2  2]]
+2026-03-02 16:40:06,289 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_2_Cleaned_-_Random_Forest.png
+2026-03-02 16:40:06,290 - experiments.run_experiments - INFO - >>> Applying Feature Selection: Filter (Mutual Info)
+2026-03-02 16:40:06,290 - src.feature_selection - INFO - Applying Mutual Information Filter (top 15 features)
+2026-03-02 16:40:06,414 - src.feature_selection - INFO - Mutual Info Filter selected 15 features.
+2026-03-02 16:40:06,417 - experiments.run_experiments - INFO - --- Running evaluation for: 3_Cleaned_Filter_MI ---
+2026-03-02 16:40:06,418 - src.model_training - INFO - Training Logistic Regression model...
+2026-03-02 16:40:06,425 - src.model_training - INFO - Logistic Regression training completed in 0.0065 seconds.
+2026-03-02 16:40:06,426 - src.evaluation - INFO - Evaluating Logistic Regression on configuration: 3_Cleaned_Filter_MI
+2026-03-02 16:40:06,445 - src.evaluation - INFO - Confusion Matrix for Logistic Regression (3_Cleaned_Filter_MI):
+[[15  8]
+ [ 3  1]]
+2026-03-02 16:40:06,716 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_3_Cleaned_Filter_MI_-_Logistic_Regression.png
+2026-03-02 16:40:06,717 - src.model_training - INFO - Training Random Forest model...
+2026-03-02 16:40:07,101 - src.model_training - INFO - Random Forest training completed in 0.3830 seconds.
+2026-03-02 16:40:07,115 - src.evaluation - INFO - Evaluating Random Forest on configuration: 3_Cleaned_Filter_MI
+2026-03-02 16:40:07,222 - src.evaluation - INFO - Confusion Matrix for Random Forest (3_Cleaned_Filter_MI):
+[[21  2]
+ [ 3  1]]
+2026-03-02 16:40:07,646 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_3_Cleaned_Filter_MI_-_Random_Forest.png
+2026-03-02 16:40:07,647 - experiments.run_experiments - INFO - >>> Applying Feature Selection: Wrapper (RFE)
+2026-03-02 16:40:07,648 - src.feature_selection - INFO - Applying Recursive Feature Elimination (RFE) targeting 10 features.
+2026-03-02 16:40:07,738 - src.feature_selection - INFO - RFE selected 10 features.
+2026-03-02 16:40:07,741 - experiments.run_experiments - INFO - --- Running evaluation for: 4_Cleaned_Wrapper_RFE ---
+2026-03-02 16:40:07,742 - src.model_training - INFO - Training Logistic Regression model...
+2026-03-02 16:40:07,749 - src.model_training - INFO - Logistic Regression training completed in 0.0063 seconds.
+2026-03-02 16:40:07,751 - src.evaluation - INFO - Evaluating Logistic Regression on configuration: 4_Cleaned_Wrapper_RFE
+2026-03-02 16:40:07,779 - src.evaluation - INFO - Confusion Matrix for Logistic Regression (4_Cleaned_Wrapper_RFE):
+[[17  6]
+ [ 2  2]]
+2026-03-02 16:40:08,189 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_4_Cleaned_Wrapper_RFE_-_Logistic_Regression.png
+2026-03-02 16:40:08,190 - src.model_training - INFO - Training Random Forest model...
+2026-03-02 16:40:08,471 - src.model_training - INFO - Random Forest training completed in 0.2806 seconds.
+2026-03-02 16:40:08,472 - src.evaluation - INFO - Evaluating Random Forest on configuration: 4_Cleaned_Wrapper_RFE
+2026-03-02 16:40:08,573 - src.evaluation - INFO - Confusion Matrix for Random Forest (4_Cleaned_Wrapper_RFE):
+[[18  5]
+ [ 2  2]]
+2026-03-02 16:40:08,948 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_4_Cleaned_Wrapper_RFE_-_Random_Forest.png
+2026-03-02 16:40:08,950 - experiments.run_experiments - INFO - >>> Applying Feature Selection: Embedded (Random Forest)
+2026-03-02 16:40:08,952 - src.feature_selection - INFO - Applying Random Forest Embedded feature selection with threshold=mean
+2026-03-02 16:40:09,476 - src.feature_selection - INFO - Random Forest Embedded selected 7 features.
+2026-03-02 16:40:09,480 - experiments.run_experiments - INFO - --- Running evaluation for: 5_Cleaned_Embedded_RF ---
+2026-03-02 16:40:09,480 - src.model_training - INFO - Training Logistic Regression model...
+2026-03-02 16:40:09,486 - src.model_training - INFO - Logistic Regression training completed in 0.0050 seconds.
+2026-03-02 16:40:09,487 - src.evaluation - INFO - Evaluating Logistic Regression on configuration: 5_Cleaned_Embedded_RF
+2026-03-02 16:40:09,509 - src.evaluation - INFO - Confusion Matrix for Logistic Regression (5_Cleaned_Embedded_RF):
+[[15  8]
+ [ 3  1]]
+2026-03-02 16:40:09,906 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_5_Cleaned_Embedded_RF_-_Logistic_Regression.png
+2026-03-02 16:40:09,909 - src.model_training - INFO - Training Random Forest model...
+2026-03-02 16:40:10,239 - src.model_training - INFO - Random Forest training completed in 0.3238 seconds.
+2026-03-02 16:40:10,241 - src.evaluation - INFO - Evaluating Random Forest on configuration: 5_Cleaned_Embedded_RF
+2026-03-02 16:40:10,331 - src.evaluation - INFO - Confusion Matrix for Random Forest (5_Cleaned_Embedded_RF):
+[[18  5]
+ [ 3  1]]
+2026-03-02 16:40:10,695 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_5_Cleaned_Embedded_RF_-_Random_Forest.png
+2026-03-02 16:40:10,720 - experiments.run_experiments - INFO - >>> Saving all evaluation metrics
+2026-03-02 16:40:10,729 - src.evaluation - INFO - Saved experiment metrics to E:\CSE\dwdm-ca2\results\metrics.csv
+2026-03-02 16:40:10,746 - experiments.run_experiments - INFO - *** Best Configuration Identified: 1_Raw with Random Forest ***
+2026-03-02 16:40:10,762 - experiments.run_experiments - INFO - *** Best ROC-AUC: 0.8712 ***
+2026-03-02 16:40:10,765 - main - INFO - Experimental Pipeline Completed Successfully.
+2026-03-02 16:43:40,198 - main - INFO - Starting Experimental Pipeline...
+2026-03-02 16:43:40,199 - src.utils - INFO - Ensured directory exists: E:\CSE\dwdm-ca2\results
+2026-03-02 16:43:40,200 - src.utils - INFO - Ensured directory exists: E:\CSE\dwdm-ca2\results\plots
+2026-03-02 16:43:40,200 - experiments.run_experiments - INFO - Starting Research Experiment Pipeline
+2026-03-02 16:43:40,201 - experiments.run_experiments - INFO - Loading data from E:\CSE\dwdm-ca2\data\creditcard.csv
+2026-03-02 16:43:42,399 - experiments.run_experiments - INFO - Data loaded successfully. Shape: (284807, 31)
+2026-03-02 16:43:42,401 - experiments.run_experiments - INFO - >>> Running Baseline: Raw Data
+2026-03-02 16:43:42,749 - experiments.run_experiments - INFO - --- Running evaluation for: 1_Raw ---
+2026-03-02 16:43:42,750 - src.model_training - INFO - Training Logistic Regression model...
+2026-03-02 16:44:17,988 - src.model_training - INFO - Logistic Regression training completed in 35.2379 seconds.
+2026-03-02 16:44:17,989 - src.evaluation - INFO - Evaluating Logistic Regression on configuration: 1_Raw
+2026-03-02 16:44:18,137 - src.evaluation - INFO - Confusion Matrix for Logistic Regression (1_Raw):
+[[56851    13]
+ [   31    67]]
+2026-03-02 16:44:18,718 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_1_Raw_-_Logistic_Regression.png
+2026-03-02 16:44:18,718 - src.model_training - INFO - Training Random Forest model...
+2026-03-02 16:46:09,184 - src.model_training - INFO - Random Forest training completed in 110.4655 seconds.
+2026-03-02 16:46:09,186 - src.evaluation - INFO - Evaluating Random Forest on configuration: 1_Raw
+2026-03-02 16:46:09,762 - src.evaluation - INFO - Confusion Matrix for Random Forest (1_Raw):
+[[56859     5]
+ [   18    80]]
+2026-03-02 16:46:10,309 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_1_Raw_-_Random_Forest.png
+2026-03-02 16:46:10,310 - experiments.run_experiments - INFO - >>> Applying Data Cleansing Phase
+2026-03-02 16:46:10,415 - src.data_cleaning - INFO - Handling missing values using strategy: mean
+2026-03-02 16:46:10,441 - src.data_cleaning - INFO - No missing values found.
+2026-03-02 16:46:11,843 - src.data_cleaning - INFO - Removed 1081 duplicate rows. New shape: (283726, 31)
+2026-03-02 16:46:11,852 - src.data_cleaning - INFO - Removing outliers using IQR method.
+2026-03-02 16:46:12,678 - src.data_cleaning - INFO - Removed 137773 outliers via IQR. New shape: (145953, 31)
+2026-03-02 16:46:12,694 - src.data_cleaning - INFO - Scaling features using standard scaler.
+2026-03-02 16:46:12,859 - src.data_cleaning - INFO - Features scaled successfully.
+2026-03-02 16:46:13,056 - src.data_cleaning - INFO - Applying SMOTE to handle class imbalance.
+2026-03-02 16:46:15,228 - src.data_cleaning - INFO - SMOTE applied. Original shape: (116762, 30), Resampled shape: (233500, 30)
+2026-03-02 16:46:15,228 - experiments.run_experiments - INFO - --- Running evaluation for: 2_Cleaned ---
+2026-03-02 16:46:15,229 - src.model_training - INFO - Training Logistic Regression model...
+2026-03-02 16:46:19,658 - src.model_training - INFO - Logistic Regression training completed in 4.4288 seconds.
+2026-03-02 16:46:19,689 - src.evaluation - INFO - Evaluating Logistic Regression on configuration: 2_Cleaned
+2026-03-02 16:46:19,822 - src.evaluation - INFO - Confusion Matrix for Logistic Regression (2_Cleaned):
+[[27081  2107]
+ [    1     2]]
+2026-03-02 16:46:20,096 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_2_Cleaned_-_Logistic_Regression.png
+2026-03-02 16:46:20,097 - src.model_training - INFO - Training Random Forest model...
+2026-03-02 16:48:04,153 - src.model_training - INFO - Random Forest training completed in 104.0551 seconds.
+2026-03-02 16:48:04,153 - src.evaluation - INFO - Evaluating Random Forest on configuration: 2_Cleaned
+2026-03-02 16:48:04,374 - src.evaluation - INFO - Confusion Matrix for Random Forest (2_Cleaned):
+[[29183     5]
+ [    3     0]]
+2026-03-02 16:48:04,677 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_2_Cleaned_-_Random_Forest.png
+2026-03-02 16:48:04,678 - experiments.run_experiments - INFO - >>> Applying Feature Selection: Filter (Mutual Info)
+2026-03-02 16:48:04,679 - src.feature_selection - INFO - Applying Mutual Information Filter (top 15 features)
+2026-03-02 16:49:25,977 - src.feature_selection - INFO - Mutual Info Filter selected 15 features.
+2026-03-02 16:49:26,021 - experiments.run_experiments - INFO - --- Running evaluation for: 3_Cleaned_Filter_MI ---
+2026-03-02 16:49:26,022 - src.model_training - INFO - Training Logistic Regression model...
+2026-03-02 16:49:26,582 - src.model_training - INFO - Logistic Regression training completed in 0.5598 seconds.
+2026-03-02 16:49:26,583 - src.evaluation - INFO - Evaluating Logistic Regression on configuration: 3_Cleaned_Filter_MI
+2026-03-02 16:49:26,643 - src.evaluation - INFO - Confusion Matrix for Logistic Regression (3_Cleaned_Filter_MI):
+[[24877  4311]
+ [    0     3]]
+2026-03-02 16:49:26,863 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_3_Cleaned_Filter_MI_-_Logistic_Regression.png
+2026-03-02 16:49:26,864 - src.model_training - INFO - Training Random Forest model...
+2026-03-02 16:50:18,524 - src.model_training - INFO - Random Forest training completed in 51.6605 seconds.
+2026-03-02 16:50:18,525 - src.evaluation - INFO - Evaluating Random Forest on configuration: 3_Cleaned_Filter_MI
+2026-03-02 16:50:18,718 - src.evaluation - INFO - Confusion Matrix for Random Forest (3_Cleaned_Filter_MI):
+[[29188     0]
+ [    3     0]]
+2026-03-02 16:50:19,014 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_3_Cleaned_Filter_MI_-_Random_Forest.png
+2026-03-02 16:50:19,015 - experiments.run_experiments - INFO - >>> Applying Feature Selection: Wrapper (RFE)
+2026-03-02 16:50:19,015 - src.feature_selection - INFO - Applying Recursive Feature Elimination (RFE) targeting 10 features.
+2026-03-02 16:52:01,185 - src.feature_selection - INFO - RFE selected 10 features.
+2026-03-02 16:52:01,210 - experiments.run_experiments - INFO - --- Running evaluation for: 4_Cleaned_Wrapper_RFE ---
+2026-03-02 16:52:01,211 - src.model_training - INFO - Training Logistic Regression model...
+2026-03-02 16:52:01,782 - src.model_training - INFO - Logistic Regression training completed in 0.5708 seconds.
+2026-03-02 16:52:01,783 - src.evaluation - INFO - Evaluating Logistic Regression on configuration: 4_Cleaned_Wrapper_RFE
+2026-03-02 16:52:01,839 - src.evaluation - INFO - Confusion Matrix for Logistic Regression (4_Cleaned_Wrapper_RFE):
+[[24243  4945]
+ [    0     3]]
+2026-03-02 16:52:02,068 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_4_Cleaned_Wrapper_RFE_-_Logistic_Regression.png
+2026-03-02 16:52:02,258 - src.model_training - INFO - Training Random Forest model...
+2026-03-02 16:52:52,077 - src.model_training - INFO - Random Forest training completed in 49.8189 seconds.
+2026-03-02 16:52:52,078 - src.evaluation - INFO - Evaluating Random Forest on configuration: 4_Cleaned_Wrapper_RFE
+2026-03-02 16:52:52,271 - src.evaluation - INFO - Confusion Matrix for Random Forest (4_Cleaned_Wrapper_RFE):
+[[29185     3]
+ [    3     0]]
+2026-03-02 16:52:52,572 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_4_Cleaned_Wrapper_RFE_-_Random_Forest.png
+2026-03-02 16:52:52,573 - experiments.run_experiments - INFO - >>> Applying Feature Selection: Embedded (Random Forest)
+2026-03-02 16:52:52,574 - src.feature_selection - INFO - Applying Random Forest Embedded feature selection with threshold=mean
+2026-03-02 16:54:32,015 - src.feature_selection - INFO - Random Forest Embedded selected 10 features.
+2026-03-02 16:54:32,052 - experiments.run_experiments - INFO - --- Running evaluation for: 5_Cleaned_Embedded_RF ---
+2026-03-02 16:54:32,053 - src.model_training - INFO - Training Logistic Regression model...
+2026-03-02 16:54:32,395 - src.model_training - INFO - Logistic Regression training completed in 0.3415 seconds.
+2026-03-02 16:54:32,632 - src.evaluation - INFO - Evaluating Logistic Regression on configuration: 5_Cleaned_Embedded_RF
+2026-03-02 16:54:32,685 - src.evaluation - INFO - Confusion Matrix for Logistic Regression (5_Cleaned_Embedded_RF):
+[[24150  5038]
+ [    0     3]]
+2026-03-02 16:54:32,912 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_5_Cleaned_Embedded_RF_-_Logistic_Regression.png
+2026-03-02 16:54:32,912 - src.model_training - INFO - Training Random Forest model...
+2026-03-02 16:55:21,351 - src.model_training - INFO - Random Forest training completed in 48.4381 seconds.
+2026-03-02 16:55:21,351 - src.evaluation - INFO - Evaluating Random Forest on configuration: 5_Cleaned_Embedded_RF
+2026-03-02 16:55:21,538 - src.evaluation - INFO - Confusion Matrix for Random Forest (5_Cleaned_Embedded_RF):
+[[29185     3]
+ [    3     0]]
+2026-03-02 16:55:21,823 - src.evaluation - INFO - Saved confusion matrix plot to E:\CSE\dwdm-ca2\results\plots\cm_5_Cleaned_Embedded_RF_-_Random_Forest.png
+2026-03-02 16:55:21,824 - experiments.run_experiments - INFO - >>> Saving all evaluation metrics
+2026-03-02 16:55:21,829 - src.evaluation - INFO - Saved experiment metrics to E:\CSE\dwdm-ca2\results\metrics.csv
+2026-03-02 16:55:21,830 - experiments.run_experiments - INFO - *** Best Configuration Identified: 3_Cleaned_Filter_MI with Logistic Regression ***
+2026-03-02 16:55:21,830 - experiments.run_experiments - INFO - *** Best ROC-AUC: 0.9918 ***
+2026-03-02 16:55:21,884 - main - INFO - Experimental Pipeline Completed Successfully.

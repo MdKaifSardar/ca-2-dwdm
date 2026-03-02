@@ -1,0 +1,15 @@
+# Ignore data files to prevent large commits
+data/*.csv
+data/*.zip
+
+# Virtual environments
+venv/
+.env/
+
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Results and logs
+results/experiment.log
